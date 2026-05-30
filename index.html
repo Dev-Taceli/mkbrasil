@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MemeForge</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: radial-gradient(circle at top, #3b0764 0%, #12001f 45%, #050008 100%);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 18px;
+      overflow-x: hidden;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 430px;
+      background: rgba(10, 5, 20, 0.88);
+      border: 1px solid rgba(190, 80, 255, 0.45);
+      border-radius: 28px;
+      padding: 26px 20px 24px;
+      box-shadow: 0 0 40px rgba(168, 85, 247, 0.35);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      background: #9333ea;
+      filter: blur(90px);
+      opacity: 0.55;
+      top: -60px;
+      right: -60px;
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(168, 85, 247, 0.18);
+      border: 1px solid rgba(216, 180, 254, 0.5);
+      font-size: 13px;
+      font-weight: 700;
+      color: #e9d5ff;
+      margin-bottom: 18px;
+      letter-spacing: 0.5px;
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7e22ce, #ec4899, #f97316);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 35px rgba(236, 72, 153, 0.55);
+      border: 3px solid rgba(255,255,255,0.22);
+      font-size: 50px;
+    }
+
+    h1 {
+      font-size: 34px;
+      line-height: 1.05;
+      margin-bottom: 12px;
+      letter-spacing: -1px;
+    }
+
+    h1 span {
+      color: #c084fc;
+    }
+
+    .subtitle {
+      font-size: 17px;
+      line-height: 1.45;
+      color: #e9d5ff;
+      margin-bottom: 20px;
+    }
+
+    .features {
+      display: grid;
+      gap: 10px;
+      margin: 22px 0;
+      text-align: left;
+    }
+
+    .feature {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 16px;
+      padding: 13px 14px;
+      font-size: 15px;
+      color: #fff;
+    }
+
+    .cta {
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+      padding: 18px 18px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #9333ea, #ec4899);
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 900;
+      box-shadow: 0 0 30px rgba(236, 72, 153, 0.55);
+      animation: pulse 1.7s infinite;
+    }
+
+    .cta small {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 4px;
+      color: #fce7f3;
+    }
+
+    .note {
+      margin-top: 14px;
+      font-size: 12px;
+      color: #c4b5fd;
+      line-height: 1.4;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="glow"></div>
+    <div class="content">
+      <div class="badge">👾 COMUNIDADE MEMECOIN</div>
+      <div class="logo">🚀</div>
+      <h1>Entre na <span>MemeForge</span></h1>
+      <p class="subtitle">A comunidade para quem curte memecoins, cultura crypto e próximos lançamentos.</p>
+
+      <section class="features">
+        <div class="feature">🔥 Sneak peeks e novidades da comunidade</div>
+        <div class="feature">🚀 Acesso antecipado aos próximos lançamentos</div>
+        <div class="feature">👾 Conteúdo diário sobre o mercado meme</div>
+      </section>
+
+      <a class="cta" href="https://t.me/+WhdYvn9WRMllZjgx" target="_blank" rel="noopener noreferrer">
+        ENTRAR NO GRUPO AGORA
+        <small>Toque aqui para acessar</small>
+      </a>
+
+      <p class="note">Comunidade oficial. Sem promessas financeiras. Apenas conteúdo, novidades e cultura memecoin.</p>
+    </div>
+  </main>
+</body>
+</html>
