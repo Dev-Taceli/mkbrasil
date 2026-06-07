@@ -1,196 +1,221 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1292445126290289');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1292445126290289&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MemeForge</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rifas Brasil - Grupo VIP</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:linear-gradient(180deg,#021108,#000);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:420px;
+    background:#08160d;
+    border:2px solid #25D366;
+    border-radius:25px;
+    padding:30px 20px;
+    text-align:center;
+    box-shadow:0 0 30px rgba(37,211,102,.4);
+}
+
+.logo{
+    font-size:32px;
+    font-weight:900;
+    color:#FFD700;
+    margin-bottom:15px;
+}
+
+.titulo{
+    font-size:42px;
+    font-weight:900;
+    color:#FFD700;
+    margin-bottom:10px;
+}
+
+.subtitulo{
+    font-size:20px;
+    color:#FFFFFF;
+    font-weight:600;
+    line-height:1.4;
+    margin-bottom:25px;
+}
+
+.texto-barra{
+    font-size:20px;
+    font-weight:900;
+    color:#FFFFFF;
+    margin-bottom:12px;
+}
+
+.barra-fundo{
+    width:100%;
+    height:35px;
+    background:#1b1b1b;
+    border-radius:50px;
+    overflow:hidden;
+    border:2px solid #FFD700;
+}
+
+.barra{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#00ff66,#FFD700);
+    border-radius:50px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#000;
+    font-weight:900;
+    font-size:16px;
+}
+
+.aviso{
+    margin-top:18px;
+    color:#FFD700;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.botao{
+    display:block;
+    width:100%;
+    margin-top:25px;
+    background:#25D366;
+    color:white;
+    text-decoration:none;
+    padding:18px;
+    border-radius:15px;
+    font-size:22px;
+    font-weight:900;
+    box-shadow:0 0 20px rgba(37,211,102,.8);
+}
+
+.botao:hover{
+    transform:scale(1.02);
+}
+
+.cards{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+}
+
+.card{
+    flex:1;
+    background:#111;
+    border-radius:12px;
+    padding:10px;
+    color:white;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.rodape{
+    margin-top:15px;
+    color:#ccc;
+    font-size:13px;
+}
+
+@media(max-width:480px){
+
+    .container{
+        padding:25px 15px;
     }
 
-    body {
-      min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      background: radial-gradient(circle at top, #3b0764 0%, #12001f 45%, #050008 100%);
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 16px;
-      overflow-x: hidden;
+    .titulo{
+        font-size:36px;
     }
 
-    .card {
-      width: 100%;
-      max-width: 430px;
-      background: rgba(10, 5, 20, 0.9);
-      border: 1px solid rgba(190, 80, 255, 0.45);
-      border-radius: 28px;
-      padding: 22px 18px 22px;
-      box-shadow: 0 0 40px rgba(168, 85, 247, 0.35);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+    .subtitulo{
+        font-size:18px;
     }
 
-    .glow {
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      background: #9333ea;
-      filter: blur(90px);
-      opacity: 0.55;
-      top: -60px;
-      right: -60px;
-      z-index: 0;
+    .texto-barra{
+        font-size:18px;
     }
 
-    .content {
-      position: relative;
-      z-index: 1;
+    .botao{
+        font-size:20px;
     }
 
-    .badge {
-      display: inline-block;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(168, 85, 247, 0.18);
-      border: 1px solid rgba(216, 180, 254, 0.5);
-      font-size: 13px;
-      font-weight: 700;
-      color: #e9d5ff;
-      margin-bottom: 14px;
-      letter-spacing: 0.5px;
-    }
+}
 
-    .logo {
-      width: 95px;
-      height: 95px;
-      margin: 0 auto 14px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #7e22ce, #ec4899, #f97316);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 35px rgba(236, 72, 153, 0.55);
-      border: 3px solid rgba(255,255,255,0.22);
-      font-size: 42px;
-    }
-
-    h1 {
-      font-size: 31px;
-      line-height: 1.05;
-      margin-bottom: 10px;
-      letter-spacing: -1px;
-    }
-
-    h1 span {
-      color: #c084fc;
-    }
-
-    .subtitle {
-      font-size: 16px;
-      line-height: 1.35;
-      color: #e9d5ff;
-      margin-bottom: 16px;
-    }
-
-    .cta {
-      display: block;
-      width: 100%;
-      margin: 16px 0 18px;
-      padding: 17px 16px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, #a855f7, #ec4899);
-      color: #fff;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: 900;
-      box-shadow: 0 0 30px rgba(236, 72, 153, 0.55);
-      animation: pulse 1.7s infinite;
-    }
-
-    .cta small {
-      display: block;
-      font-size: 12px;
-      font-weight: 600;
-      margin-top: 4px;
-      color: #fce7f3;
-    }
-
-    .features {
-      display: grid;
-      gap: 10px;
-      margin: 0 0 18px;
-      text-align: left;
-    }
-
-    .feature {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.10);
-      border-radius: 16px;
-      padding: 13px 14px;
-      font-size: 15px;
-      color: #fff;
-    }
-
-    .note {
-      margin-top: 10px;
-      font-size: 12px;
-      color: #c4b5fd;
-      line-height: 1.4;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-      100% { transform: scale(1); }
-    }
-  </style>
+</style>
 </head>
+
 <body>
-  <main class="card">
-    <div class="glow"></div>
-    <div class="content">
-      <div class="badge">👾 COMUNIDADE MEMECOIN</div>
-      <div class="logo">🚀</div>
 
-      <h1>Entre na <span>MemeForge</span></h1>
-      <p class="subtitle">A comunidade para quem curte memecoins, cultura crypto e próximos lançamentos.</p>
+<div class="container">
 
-      <a class="cta" href="https://t.me/+WhdYvn9WRMllZjgx" target="_blank" rel="noopener noreferrer">
-        ENTRAR NO GRUPO AGORA
-        <small>Toque aqui para acessar</small>
-      </a>
+    <div class="logo">🎟️ RIFAS BRASIL</div>
 
-      <section class="features">
-        <div class="feature">🔥 Sneak peeks e novidades da comunidade</div>
-        <div class="feature">🚀 Acesso antecipado aos próximos lançamentos</div>
-        <div class="feature">👾 Conteúdo diário sobre o mercado meme</div>
-      </section>
+    <div class="titulo">🎉 PARABÉNS!</div>
 
-      <p class="note">Comunidade oficial. Sem promessas financeiras. Apenas conteúdo, novidades e cultura memecoin.</p>
+    <div class="subtitulo">
+        Você foi selecionado para entrar no Grupo VIP de Rifas
     </div>
-  </main>
+
+    <div class="texto-barra">
+        ESTÁ QUASE LÁ, GARANTA SUA VAGA!
+    </div>
+
+    <div class="barra-fundo">
+        <div class="barra" id="barra">0%</div>
+    </div>
+
+    <a href="https://chat.whatsapp.com/HBuTi3epBOD0rINpDwQouV" class="botao">
+        👉 ENTRAR NO GRUPO VIP DE RIFAS
+    </a>
+
+    <div class="cards">
+        <div class="card">🎁<br>Prêmios Diários</div>
+        <div class="card">🏆<br>Loteria Federal</div>
+        <div class="card">🎯<br>100 Números</div>
+    </div>
+
+    <div class="rodape">
+        Sorteios todos os dias • Grupo VIP Oficial
+    </div>
+
+</div>
+
+<script>
+
+const barra = document.getElementById('barra');
+
+let progresso = 0;
+const alvo = 91;
+
+const animacao = setInterval(() => {
+
+    progresso++;
+
+    barra.style.width = progresso + "%";
+    barra.innerHTML = progresso + "%";
+
+    if(progresso >= alvo){
+        clearInterval(animacao);
+    }
+
+}, 8); // MAIS RÁPIDA
+
+</script>
+
 </body>
 </html>
