@@ -6,7 +6,6 @@
 <title>Rifas Brasil - Grupo VIP</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -21,6 +20,7 @@ body{
     justify-content:center;
     align-items:center;
     padding:20px;
+    overflow-x:hidden;
 }
 
 .container{
@@ -29,43 +29,43 @@ body{
     background:#08160d;
     border:2px solid #25D366;
     border-radius:25px;
-    padding:30px 20px;
+    padding:26px 18px;
     text-align:center;
     box-shadow:0 0 30px rgba(37,211,102,.4);
 }
 
 .logo{
-    font-size:32px;
+    font-size:30px;
     font-weight:900;
     color:#FFD700;
-    margin-bottom:15px;
+    margin-bottom:12px;
 }
 
 .titulo{
-    font-size:42px;
+    font-size:38px;
     font-weight:900;
     color:#FFD700;
-    margin-bottom:10px;
+    margin-bottom:8px;
 }
 
 .subtitulo{
-    font-size:20px;
+    font-size:19px;
     color:#FFFFFF;
     font-weight:600;
-    line-height:1.4;
-    margin-bottom:25px;
+    line-height:1.35;
+    margin-bottom:22px;
 }
 
 .texto-barra{
-    font-size:20px;
+    font-size:19px;
     font-weight:900;
     color:#FFFFFF;
-    margin-bottom:12px;
+    margin-bottom:10px;
 }
 
 .barra-fundo{
     width:100%;
-    height:35px;
+    height:34px;
     background:#1b1b1b;
     border-radius:50px;
     overflow:hidden;
@@ -85,25 +85,19 @@ body{
     font-size:16px;
 }
 
-.aviso{
-    margin-top:18px;
-    color:#FFD700;
-    font-size:18px;
-    font-weight:bold;
-}
-
 .botao{
     display:block;
     width:100%;
-    margin-top:25px;
+    margin-top:22px;
     background:#25D366;
     color:white;
     text-decoration:none;
-    padding:18px;
+    padding:17px;
     border-radius:15px;
-    font-size:22px;
+    font-size:21px;
     font-weight:900;
     box-shadow:0 0 20px rgba(37,211,102,.8);
+    transition:.2s;
 }
 
 .botao:hover{
@@ -112,50 +106,124 @@ body{
 
 .cards{
     display:flex;
-    gap:10px;
-    margin-top:20px;
+    gap:9px;
+    margin-top:18px;
 }
 
 .card{
     flex:1;
     background:#111;
     border-radius:12px;
-    padding:10px;
+    padding:9px;
     color:white;
-    font-size:13px;
+    font-size:12px;
     font-weight:bold;
 }
 
 .rodape{
-    margin-top:15px;
+    margin-top:14px;
     color:#ccc;
-    font-size:13px;
+    font-size:12px;
 }
 
 @media(max-width:480px){
+    body{
+        align-items:flex-start;
+        padding:14px 14px 10px;
+    }
 
     .container{
-        padding:25px 15px;
+        max-width:100%;
+        padding:20px 14px;
+        border-radius:22px;
+    }
+
+    .logo{
+        font-size:26px;
+        margin-bottom:9px;
     }
 
     .titulo{
-        font-size:36px;
+        font-size:32px;
+        margin-bottom:7px;
     }
 
     .subtitulo{
-        font-size:18px;
+        font-size:16px;
+        margin-bottom:18px;
     }
 
     .texto-barra{
-        font-size:18px;
+        font-size:16px;
+        margin-bottom:9px;
+    }
+
+    .barra-fundo{
+        height:32px;
     }
 
     .botao{
-        font-size:20px;
+        margin-top:18px;
+        font-size:18px;
+        padding:15px 10px;
     }
 
+    .cards{
+        margin-top:15px;
+        gap:7px;
+    }
+
+    .card{
+        font-size:11px;
+        padding:8px 5px;
+    }
+
+    .rodape{
+        margin-top:12px;
+        font-size:11px;
+    }
 }
 
+@media(max-height:680px){
+    body{
+        align-items:flex-start;
+        padding-top:10px;
+    }
+
+    .container{
+        padding:16px 13px;
+        transform:scale(.96);
+        transform-origin:top center;
+    }
+
+    .logo{
+        font-size:24px;
+        margin-bottom:7px;
+    }
+
+    .titulo{
+        font-size:30px;
+    }
+
+    .subtitulo{
+        font-size:15px;
+        margin-bottom:14px;
+    }
+
+    .texto-barra{
+        font-size:15px;
+    }
+
+    .botao{
+        margin-top:15px;
+        font-size:17px;
+        padding:14px 8px;
+    }
+
+    .cards{
+        margin-top:13px;
+    }
+}
 </style>
 </head>
 
@@ -180,7 +248,7 @@ body{
     </div>
 
     <a href="https://chat.whatsapp.com/HBuTi3epBOD0rINpDwQouV" class="botao">
-        👉 ENTRAR NO GRUPO VIP DE RIFAS
+        👉 ENTRAR NO GRUPO VIP
     </a>
 
     <div class="cards">
@@ -196,14 +264,12 @@ body{
 </div>
 
 <script>
-
 const barra = document.getElementById('barra');
 
 let progresso = 0;
 const alvo = 91;
 
 const animacao = setInterval(() => {
-
     progresso++;
 
     barra.style.width = progresso + "%";
@@ -212,9 +278,7 @@ const animacao = setInterval(() => {
     if(progresso >= alvo){
         clearInterval(animacao);
     }
-
-}, 8); // MAIS RÁPIDA
-
+}, 8);
 </script>
 
 </body>
