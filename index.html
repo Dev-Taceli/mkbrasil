@@ -29,16 +29,20 @@ body{
 }
 
 .logo{
-    font-size:30px;
-    font-weight:bold;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size:46px;
+    letter-spacing:2px;
     color:#1f7a3a;
     margin-top:15px;
+    text-transform:uppercase;
+    text-shadow:2px 2px 0 #d6e8d9;
 }
 
 .sub{
-    font-size:18px;
+    font-size:20px;
     margin:15px 0 20px;
-    color:#444;
+    color:#333;
+    font-weight:bold;
 }
 
 .video-box{
@@ -115,6 +119,46 @@ video{
     font-size:17px;
 }
 
+.pagamento-box{
+    background:linear-gradient(135deg,#1f7a3a,#145b2a);
+    color:#fff;
+    padding:25px;
+    border-radius:18px;
+    margin-bottom:30px;
+    box-shadow:0 6px 18px rgba(0,0,0,.18);
+}
+
+.pagamento-box h2{
+    color:#fff;
+    margin-bottom:15px;
+    font-size:26px;
+    text-align:center;
+}
+
+.pagamento-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.pagamento-card{
+    background:rgba(255,255,255,.12);
+    padding:18px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,.25);
+}
+
+.pagamento-card strong{
+    display:block;
+    font-size:19px;
+    margin-bottom:8px;
+}
+
+.pagamento-card span{
+    font-size:15px;
+    line-height:1.5;
+}
+
 h2{
     color:#1f7a3a;
     margin-bottom:20px;
@@ -184,11 +228,15 @@ h2{
 
 @media(max-width:600px){
     .logo{
-        font-size:24px;
+        font-size:34px;
     }
 
     .sub{
         font-size:16px;
+    }
+
+    .pagamento-grid{
+        grid-template-columns:1fr;
     }
 
     .overlay-title{
@@ -220,7 +268,7 @@ h2{
         </div>
 
         <p class="sub">
-            Terrenos em Embu-Guaçu/SP com 300m² para você construir seu sonho.
+            Seu terreno em Embu-Guaçu/SP com entrada facilitada e parcelas que cabem no seu bolso.
         </p>
 
         <div class="video-box">
@@ -249,8 +297,35 @@ h2{
 
         <div class="destaque">
             <strong>Terrenos de 300m² em Embu-Guaçu/SP.</strong><br><br>
-            Entrada a partir de <strong>R$ 15.000</strong> e parcelas a combinar.
-            Uma ótima oportunidade para morar, construir ou investir.
+            Uma excelente oportunidade para quem deseja construir, morar ou investir em uma região tranquila e com potencial de valorização.
+        </div>
+
+        <div class="pagamento-box">
+            <h2>Condições de Pagamento</h2>
+
+            <div class="pagamento-grid">
+
+                <div class="pagamento-card">
+                    <strong>💰 À vista</strong>
+                    <span>Terreno por <b>R$ 65.000</b>.</span>
+                </div>
+
+                <div class="pagamento-card">
+                    <strong>🏡 Entrada facilitada</strong>
+                    <span>Entrada a partir de <b>R$ 15.000</b>.</span>
+                </div>
+
+                <div class="pagamento-card">
+                    <strong>📆 Parcelamento</strong>
+                    <span>Opção de <b>105 parcelas de R$ 1.000</b>.</span>
+                </div>
+
+                <div class="pagamento-card">
+                    <strong>🤝 Negociação flexível</strong>
+                    <span>Entrada de <b>10%, 20% ou 30%</b> e parcelas entre <b>R$ 500 e R$ 1.000</b>, a combinar com o cliente.</span>
+                </div>
+
+            </div>
         </div>
 
         <h2>Perguntas Frequentes</h2>
@@ -270,30 +345,30 @@ h2{
         </div>
 
         <div class="faq-item">
-            <div class="pergunta">Qual o valor da entrada?</div>
+            <div class="pergunta">Qual o valor à vista?</div>
             <div class="resposta">
-                A entrada é a partir de R$ 15.000.
+                O valor à vista é de R$ 65.000.
             </div>
         </div>
 
         <div class="faq-item">
-            <div class="pergunta">As parcelas são fixas?</div>
+            <div class="pergunta">Qual o valor da entrada?</div>
             <div class="resposta">
-                As parcelas são a combinar. Fale com um atendente para receber uma simulação conforme sua condição.
+                A entrada pode ser a partir de R$ 15.000 ou também negociada em 10%, 20% ou 30%.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="pergunta">Como funcionam as parcelas?</div>
+            <div class="resposta">
+                Existe opção de 105 parcelas de R$ 1.000. Também é possível combinar parcelas entre R$ 500 e R$ 1.000 conforme a negociação.
             </div>
         </div>
 
         <div class="faq-item">
             <div class="pergunta">Posso visitar o local?</div>
             <div class="resposta">
-                Sim. O atendente pode passar mais informações e orientar sobre visita ao empreendimento.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="pergunta">Serve para morar ou investir?</div>
-            <div class="resposta">
-                Sim. É uma opção para quem deseja construir a casa própria ou investir em terreno em uma região em desenvolvimento.
+                Sim. Fale com um atendente para receber mais informações e orientação sobre visita ao empreendimento.
             </div>
         </div>
 
@@ -301,11 +376,11 @@ h2{
 
         <ul class="beneficios">
             <li>✅ Terrenos com 300m²</li>
-            <li>✅ Entrada facilitada</li>
-            <li>✅ Parcelas a combinar</li>
+            <li>✅ Valor à vista de R$ 65.000</li>
+            <li>✅ Entrada facilitada a partir de R$ 15.000</li>
+            <li>✅ Parcelas flexíveis a combinar</li>
             <li>✅ Localizado em Embu-Guaçu/SP</li>
             <li>✅ Boa opção para moradia ou investimento</li>
-            <li>✅ Atendimento direto para tirar dúvidas</li>
         </ul>
 
         <div class="cta">
