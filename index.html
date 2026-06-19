@@ -3,243 +3,354 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rifas Brasil - Grupo VIP</title>
+<title>Green Dream Empreendimentos</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial, sans-serif;
 }
 
 body{
-    background:linear-gradient(180deg,#021108,#000);
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
+    background:#f4f7f3;
+    color:#222;
 }
 
 .container{
-    width:100%;
-    max-width:420px;
-    background:#08160d;
-    border:2px solid #25D366;
-    border-radius:25px;
-    padding:30px 20px;
+    max-width:900px;
+    margin:auto;
+    padding:15px;
+}
+
+.hero{
     text-align:center;
-    box-shadow:0 0 30px rgba(37,211,102,.4);
 }
 
 .logo{
-    font-size:32px;
-    font-weight:900;
-    color:#FFD700;
-    margin-bottom:15px;
+    font-size:30px;
+    font-weight:bold;
+    color:#1f7a3a;
+    margin-top:15px;
 }
 
-.titulo{
-    font-size:42px;
-    font-weight:900;
-    color:#FFD700;
-    margin-bottom:10px;
+.sub{
+    font-size:18px;
+    margin:15px 0 20px;
+    color:#444;
 }
 
-.subtitulo{
-    font-size:20px;
-    color:#FFFFFF;
-    font-weight:600;
-    line-height:1.4;
-    margin-bottom:25px;
-}
-
-.texto-barra{
-    font-size:20px;
-    font-weight:900;
-    color:#FFFFFF;
-    margin-bottom:12px;
-}
-
-.barra-fundo{
-    width:100%;
-    height:35px;
-    background:#1b1b1b;
-    border-radius:50px;
+.video-box{
+    position:relative;
+    border-radius:15px;
     overflow:hidden;
-    border:2px solid #FFD700;
+    box-shadow:0 5px 20px rgba(0,0,0,.2);
 }
 
-.barra{
-    width:0%;
+video{
+    width:100%;
+    display:block;
+    background:#000;
+}
+
+.overlay-video{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
     height:100%;
-    background:linear-gradient(90deg,#00ff66,#FFD700);
-    border-radius:50px;
+    background:rgba(0,0,0,.75);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    padding:20px;
+}
+
+.play-icon{
+    width:85px;
+    height:85px;
+    border-radius:50%;
+    background:#1f7a3a;
+    color:#fff;
     display:flex;
     align-items:center;
     justify-content:center;
-    color:#000;
-    font-weight:900;
-    font-size:16px;
+    font-size:42px;
+    padding-left:6px;
+    margin-bottom:15px;
 }
 
-.aviso{
-    margin-top:18px;
-    color:#FFD700;
-    font-size:18px;
+.overlay-title{
+    color:#fff;
+    font-size:22px;
     font-weight:bold;
+    text-align:center;
+}
+
+.overlay-text{
+    color:#ddd;
+    font-size:15px;
+    margin-top:8px;
+    text-align:center;
+}
+
+.info{
+    background:#fff;
+    margin-top:20px;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.destaque{
+    background:#e8f7ec;
+    border-left:5px solid #1f7a3a;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:25px;
+    line-height:1.6;
+    font-size:17px;
+}
+
+h2{
+    color:#1f7a3a;
+    margin-bottom:20px;
+}
+
+.faq-item{
+    margin-bottom:20px;
+    padding-bottom:15px;
+    border-bottom:1px solid #ddd;
+}
+
+.pergunta{
+    font-weight:bold;
+    margin-bottom:8px;
+    font-size:17px;
+}
+
+.resposta{
+    color:#555;
+    line-height:1.6;
+}
+
+.beneficios{
+    margin-top:25px;
+    padding-left:20px;
+}
+
+.beneficios li{
+    margin-bottom:10px;
+    line-height:1.5;
+}
+
+.cta{
+    text-align:center;
+    margin-top:30px;
 }
 
 .botao{
-    display:block;
-    width:100%;
-    margin-top:25px;
-    background:#25D366;
-    color:white;
+    display:inline-block;
+    background:#1f7a3a;
+    color:#fff;
     text-decoration:none;
-    padding:18px;
-    border-radius:15px;
-    font-size:22px;
-    font-weight:900;
-    box-shadow:0 0 20px rgba(37,211,102,.8);
-}
-
-.botao:hover{
-    transform:scale(1.02);
-}
-
-.cards{
-    display:flex;
-    gap:10px;
-    margin-top:20px;
-}
-
-.card{
-    flex:1;
-    background:#111;
-    border-radius:12px;
-    padding:10px;
-    color:white;
-    font-size:13px;
+    padding:18px 35px;
+    border-radius:50px;
+    font-size:20px;
     font-weight:bold;
 }
 
-.rodape{
-    margin-top:15px;
-    color:#ccc;
-    font-size:13px;
+.botao:hover{
+    background:#145b2a;
 }
 
-@media(max-width:480px){
+.localizacao{
+    display:inline-block;
+    margin-top:15px;
+    color:#1f7a3a;
+    text-decoration:none;
+    font-weight:bold;
+}
 
-    body{
-        align-items:flex-start;
-        padding-top:28px;
-        padding-left:20px;
-        padding-right:20px;
-        padding-bottom:20px;
+.footer{
+    text-align:center;
+    margin:30px 0;
+    color:#666;
+    font-size:14px;
+}
+
+@media(max-width:600px){
+    .logo{
+        font-size:24px;
     }
 
-    .container{
-        padding:25px 15px;
+    .sub{
+        font-size:16px;
     }
 
-    .titulo{
+    .overlay-title{
+        font-size:18px;
+    }
+
+    .play-icon{
+        width:70px;
+        height:70px;
         font-size:36px;
     }
 
-    .subtitulo{
-        font-size:18px;
-    }
-
-    .texto-barra{
-        font-size:18px;
-    }
-
     .botao{
-        font-size:20px;
+        font-size:17px;
+        padding:16px 25px;
     }
-
 }
-
 </style>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1238312554910174');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1238312554910174&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 </head>
 
 <body>
 
 <div class="container">
 
-    <div class="logo">🎟️ RIFAS BRASIL</div>
+    <div class="hero">
 
-    <div class="titulo">🎉 PARABÉNS!</div>
+        <div class="logo">
+            GREEN DREAM EMPREENDIMENTOS
+        </div>
 
-    <div class="subtitulo">
-        Você foi selecionado para entrar no Grupo VIP de Rifas
+        <p class="sub">
+            Terrenos em Embu-Guaçu/SP com 300m² para você construir seu sonho.
+        </p>
+
+        <div class="video-box">
+
+            <video id="videoEmpreendimento" controls playsinline>
+                <source src="https://cdn.shopify.com/videos/c/o/v/4a1b4b4841de4aa3854ca100827b626c.mp4" type="video/mp4">
+            </video>
+
+            <div class="overlay-video" id="overlayVideo">
+                <div class="play-icon">▶</div>
+
+                <div class="overlay-title">
+                    Aperte play para assistir ao vídeo
+                </div>
+
+                <div class="overlay-text">
+                    Conheça o empreendimento e veja os detalhes dos terrenos.
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="texto-barra">
-        ESTÁ QUASE LÁ, GARANTA SUA VAGA!
+    <div class="info">
+
+        <div class="destaque">
+            <strong>Terrenos de 300m² em Embu-Guaçu/SP.</strong><br><br>
+            Entrada a partir de <strong>R$ 15.000</strong> e parcelas a combinar.
+            Uma ótima oportunidade para morar, construir ou investir.
+        </div>
+
+        <h2>Perguntas Frequentes</h2>
+
+        <div class="faq-item">
+            <div class="pergunta">Onde fica o empreendimento?</div>
+            <div class="resposta">
+                O loteamento fica em Embu-Guaçu/SP, em uma região tranquila e com potencial de valorização.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="pergunta">Qual o tamanho dos terrenos?</div>
+            <div class="resposta">
+                Os terrenos possuem aproximadamente 300 metros quadrados.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="pergunta">Qual o valor da entrada?</div>
+            <div class="resposta">
+                A entrada é a partir de R$ 15.000.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="pergunta">As parcelas são fixas?</div>
+            <div class="resposta">
+                As parcelas são a combinar. Fale com um atendente para receber uma simulação conforme sua condição.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="pergunta">Posso visitar o local?</div>
+            <div class="resposta">
+                Sim. O atendente pode passar mais informações e orientar sobre visita ao empreendimento.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="pergunta">Serve para morar ou investir?</div>
+            <div class="resposta">
+                Sim. É uma opção para quem deseja construir a casa própria ou investir em terreno em uma região em desenvolvimento.
+            </div>
+        </div>
+
+        <h2>Por que conhecer o Green Dream?</h2>
+
+        <ul class="beneficios">
+            <li>✅ Terrenos com 300m²</li>
+            <li>✅ Entrada facilitada</li>
+            <li>✅ Parcelas a combinar</li>
+            <li>✅ Localizado em Embu-Guaçu/SP</li>
+            <li>✅ Boa opção para moradia ou investimento</li>
+            <li>✅ Atendimento direto para tirar dúvidas</li>
+        </ul>
+
+        <div class="cta">
+
+            <a class="botao"
+               href="https://wa.me/5511915622595?text=Olá,%20tenho%20interesse%20nos%20terrenos%20do%20Green%20Dream%20Empreendimentos.%20Gostaria%20de%20mais%20informações."
+               target="_blank">
+                FALAR COM UM ATENDENTE
+            </a>
+
+            <br>
+
+            <a class="localizacao"
+               target="_blank"
+               href="https://www.google.com/maps/place/23%C2%B046'41.6%22S+46%C2%B049'02.3%22W/@-23.7782345,-46.8198814,17z/data=!3m1!4b1!4m4!3m3!8m2!3d-23.7782345!4d-46.8173065?hl=pt-BR&entry=ttu">
+                📍 Ver localização no mapa
+            </a>
+
+        </div>
+
     </div>
 
-    <div class="barra-fundo">
-        <div class="barra" id="barra">0%</div>
-    </div>
-
-    <a href="https://chat.whatsapp.com/HBuTi3epBOD0rINpDwQouV" class="botao">
-        👉 ENTRAR NO GRUPO VIP DE RIFAS
-    </a>
-
-    <div class="cards">
-        <div class="card">🎁<br>Prêmios Diários</div>
-        <div class="card">🏆<br>Loteria Federal</div>
-        <div class="card">🎯<br>100 Números</div>
-    </div>
-
-    <div class="rodape">
-        Sorteios todos os dias • Grupo VIP Oficial
+    <div class="footer">
+        Green Dream Empreendimentos • Embu-Guaçu/SP
     </div>
 
 </div>
 
 <script>
+document.addEventListener('DOMContentLoaded', function(){
 
-const barra = document.getElementById('barra');
+    const video = document.getElementById('videoEmpreendimento');
+    const overlay = document.getElementById('overlayVideo');
 
-let progresso = 0;
-const alvo = 91;
+    overlay.addEventListener('click', function(){
 
-const animacao = setInterval(() => {
+        overlay.style.display = 'none';
 
-    progresso++;
+        video.muted = false;
+        video.volume = 1;
+        video.play();
 
-    barra.style.width = progresso + "%";
-    barra.innerHTML = progresso + "%";
+    });
 
-    if(progresso >= alvo){
-        clearInterval(animacao);
-    }
-
-}, 8);
-
+});
 </script>
 
 </body>
