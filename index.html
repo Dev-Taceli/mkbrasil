@@ -1,1 +1,184 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulador de Economia Solar</title>
+<meta name="description" content="Simule gratuitamente sua economia com energia solar.">
+<style>
+:root{--verde:#16a34a;--verde-escuro:#0b6b35;--verde-claro:#ecfdf3;--texto:#17211b;--cinza:#66736b;--borda:#dfe7e1;--fundo:#f4f8f5;--branco:#fff;--sombra:0 24px 70px rgba(7,52,28,.18)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Inter,Arial,sans-serif;color:var(--texto);background:radial-gradient(circle at top left,#d7f8e3 0,transparent 32%),linear-gradient(145deg,#f7fbf8,#eaf5ee);display:flex;align-items:center;justify-content:center;padding:28px 16px}
+.page{width:100%;max-width:1040px;display:grid;grid-template-columns:.9fr 1.1fr;background:#fff;border:1px solid rgba(22,163,74,.12);border-radius:30px;overflow:hidden;box-shadow:var(--sombra)}
+.hero{padding:48px;background:linear-gradient(160deg,#073d21,#0d7a3d 70%,#19a653);color:#fff;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:999px;background:rgba(255,255,255,.08)}
+.hero:before{width:270px;height:270px;right:-120px;top:-90px}.hero:after{width:180px;height:180px;left:-90px;bottom:-80px}
+.badge{display:inline-flex;align-items:center;gap:8px;width:max-content;padding:9px 13px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);font-size:13px;font-weight:700}
+.hero h1{font-size:42px;line-height:1.05;margin:22px 0 16px;letter-spacing:-1.5px;position:relative}.hero p{margin:0;color:rgba(255,255,255,.82);font-size:17px;line-height:1.65;position:relative}
+.hero-points{display:grid;gap:13px;margin-top:30px;position:relative}.hero-point{display:flex;gap:11px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,.9)}.check{width:22px;height:22px;flex:0 0 22px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.16);font-size:12px}
+.content{padding:44px}.step-label{font-size:12px;text-transform:uppercase;letter-spacing:1.4px;font-weight:800;color:var(--verde)}.content h2{font-size:30px;line-height:1.15;margin:8px 0 8px;letter-spacing:-.7px}.subtitle{margin:0 0 26px;color:var(--cinza);line-height:1.55}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field.full{grid-column:1/-1}.field label{display:block;font-size:14px;font-weight:750;margin:0 0 8px}.input-wrap{position:relative}.prefix{position:absolute;left:15px;top:50%;transform:translateY(-50%);font-weight:800;color:#45604f}.money{padding-left:48px!important}
+input,select{width:100%;height:52px;border:1px solid var(--borda);border-radius:14px;background:#fff;padding:0 15px;font-size:16px;color:var(--texto);outline:none;transition:.2s}input:focus,select:focus{border-color:var(--verde);box-shadow:0 0 0 4px rgba(22,163,74,.1)}
+button{width:100%;border:0;border-radius:15px;padding:16px 18px;margin-top:22px;background:linear-gradient(135deg,var(--verde),#0d8a3e);color:#fff;font-size:17px;font-weight:850;cursor:pointer;box-shadow:0 12px 25px rgba(22,163,74,.2);transition:.2s}button:hover{transform:translateY(-1px);filter:brightness(.98)}button:disabled{opacity:.65;cursor:not-allowed;transform:none}
+.secure{display:flex;justify-content:center;gap:7px;align-items:center;margin-top:14px;color:#718078;font-size:12px}.error{display:none;background:#fff1f1;color:#b42318;border:1px solid #ffd1cf;border-radius:12px;padding:11px 13px;margin-top:14px;font-size:13px}
+#resultado{display:none}.result-head{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;margin-bottom:22px}.result-pill{white-space:nowrap;padding:8px 11px;border-radius:999px;background:var(--verde-claro);color:var(--verde-escuro);font-size:12px;font-weight:800}
+.result-main{background:linear-gradient(145deg,#effcf4,#e5f8ec);border:1px solid #c5efd4;border-radius:22px;padding:24px}.result-main small{color:#53705e;font-weight:700}.big-value{font-size:42px;line-height:1;margin:9px 0 7px;color:var(--verde-escuro);font-weight:900;letter-spacing:-1.4px}.result-main p{margin:0;color:#55705f;font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin-top:14px}.stat{border:1px solid var(--borda);border-radius:17px;padding:16px;background:#fff}.stat span{display:block;color:#718078;font-size:12px;margin-bottom:6px}.stat strong{font-size:20px}.analysis{margin-top:18px;border-radius:18px;background:#f7f9f7;border:1px solid #e5ebe6;padding:18px}.analysis h3{font-size:15px;margin:0 0 12px}.analysis-list{display:grid;gap:10px}.analysis-item{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:#59675e}.analysis-item strong{text-align:right;color:#1c2b21}.notice{font-size:11px;line-height:1.5;color:#7b8780;margin:14px 0 0}.new-simulation{background:#fff;color:var(--verde-escuro);border:1px solid #bee5cb;box-shadow:none;margin-top:18px}
+.overlay{position:fixed;inset:0;background:rgba(4,24,13,.68);backdrop-filter:blur(9px);display:none;align-items:center;justify-content:center;padding:18px;z-index:30}.overlay.show{display:flex}.modal{width:100%;max-width:500px;max-height:94vh;overflow:auto;background:#fff;border-radius:24px;padding:27px;box-shadow:0 30px 90px rgba(0,0,0,.3)}.modal-icon{width:48px;height:48px;border-radius:15px;background:var(--verde-claro);display:grid;place-items:center;font-size:23px}.modal h2{font-size:26px;margin:15px 0 7px}.modal>p{margin:0 0 20px;color:var(--cinza);line-height:1.5;font-size:14px}.modal .grid{gap:13px}.modal input,.modal select{height:49px}.modal button{margin-top:17px}.lgpd{font-size:11px!important;text-align:center;margin:12px 0 0!important;color:#7a867f!important}
+.loading{display:none;text-align:center;padding:24px 0 12px}.power-meter{width:210px;height:210px;border-radius:50%;margin:4px auto 22px;background:conic-gradient(var(--verde) 0deg,#e7eee9 0deg);display:grid;place-items:center;position:relative;box-shadow:inset 0 0 0 1px #dce8df,0 15px 35px rgba(13,122,61,.13);transition:background .08s linear}.power-meter:before{content:'';position:absolute;inset:12px;border-radius:50%;border:1px solid rgba(22,163,74,.12);background:repeating-conic-gradient(from -2deg,rgba(22,163,74,.34) 0 2deg,transparent 2deg 15deg)}.power-meter-inner{width:158px;height:158px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;z-index:2;box-shadow:0 8px 25px rgba(7,52,28,.12)}.power-icon{font-size:26px;line-height:1;margin-bottom:5px}.power-number{font-size:38px;font-weight:950;color:var(--verde-escuro);letter-spacing:-1px}.power-unit{font-size:11px;font-weight:850;color:#718078;letter-spacing:1.4px;margin-top:3px}.loading strong{display:block;font-size:18px}.loading .subtitle{margin:7px 0 0}.loading-status{font-size:13px;color:var(--verde-escuro);font-weight:750;margin-top:12px;min-height:19px}
+@media(max-width:820px){.page{grid-template-columns:1fr;max-width:590px}.hero{padding:32px}.hero h1{font-size:33px}.hero-points{display:none}.content{padding:30px}}@media(max-width:540px){body{padding:0;background:#fff}.page{border:0;border-radius:0;box-shadow:none}.hero{padding:27px 22px}.hero h1{font-size:30px}.content{padding:27px 20px}.grid,.stats{grid-template-columns:1fr}.field.full{grid-column:auto}.modal{padding:22px}.big-value{font-size:37px}.result-head{display:block}.result-pill{display:inline-block;margin-top:10px}}
+</style>
+</head>
+<body>
+<main class="page">
+<section class="hero">
+  <div class="badge">☀ Simulação solar gratuita</div>
+  <h1>Descubra sua economia com energia solar</h1>
+  <p>Informe os dados da sua conta e receba uma estimativa personalizada em poucos segundos.</p>
+  <div class="hero-points">
+    <div class="hero-point"><span class="check">✓</span><span>Estimativa mensal, anual e de longo prazo</span></div>
+    <div class="hero-point"><span class="check">✓</span><span>Cálculo aproximado da potência do sistema</span></div>
+    <div class="hero-point"><span class="check">✓</span><span>Simulação gratuita e sem compromisso</span></div>
+  </div>
+</section>
+<section class="content">
+  <div id="simulador">
+    <div class="step-label">Simulador inteligente</div>
+    <h2>Faça sua simulação</h2>
+    <p class="subtitle">Preencha as informações abaixo para calcular uma estimativa inicial.</p>
+    <div class="grid">
+      <div class="field full">
+        <label for="conta">Valor médio da conta de luz</label>
+        <div class="input-wrap"><span class="prefix">R$</span><input class="money" id="conta" type="text" inputmode="numeric" placeholder="Ex.: 489,98" autocomplete="off"></div>
+      </div>
+      <div class="field full">
+        <label for="cidade">Cidade</label>
+        <select id="cidade"><option value="">Carregando cidades de São Paulo...</option></select>
+      </div>
+      <div class="field">
+        <label for="distribuidora">Distribuidora de energia</label>
+        <select id="distribuidora">
+          <option value="">Selecione</option>
+          <option value="CPFL Paulista">CPFL Paulista</option>
+          <option value="CPFL Piratininga">CPFL Piratininga</option>
+          <option value="CPFL Santa Cruz">CPFL Santa Cruz</option>
+          <option value="Enel São Paulo">Enel São Paulo</option>
+          <option value="Neoenergia Elektro">Neoenergia Elektro</option>
+          <option value="EDP São Paulo">EDP São Paulo</option>
+          <option value="Outra">Outra distribuidora</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="tipo">Tipo de imóvel</label>
+        <select id="tipo"><option>Residencial</option><option>Comercial</option><option>Rural</option><option>Industrial</option></select>
+      </div>
+    </div>
+    <div class="error" id="erroSimulador"></div>
+    <button type="button" onclick="iniciarCalculo()">Calcular minha economia</button>
+    <div class="secure">🔒 Seus dados são tratados com segurança</div>
+  </div>
+  <div class="loading" id="loading">
+    <div class="power-meter" id="powerMeter"><div class="power-meter-inner"><div class="power-icon">⚡</div><div class="power-number" id="powerPercent">0%</div><div class="power-unit">POTENCIAL SOLAR</div></div></div>
+    <strong>Analisando seu potencial de economia...</strong>
+    <p class="subtitle">Cruzando consumo, cidade e distribuidora.</p>
+    <div class="loading-status" id="loadingStatus">Lendo os dados da sua conta...</div>
+  </div>
+  <div id="resultado">
+    <div class="result-head"><div><div class="step-label">Resultado da simulação</div><h2>Seu potencial de economia</h2></div><span class="result-pill" id="pillDistribuidora"></span></div>
+    <div class="result-main"><small>ECONOMIA MENSAL ESTIMADA</small><div class="big-value" id="economiaMensal"></div><p>Redução estimada de até 85% sobre o valor informado.</p></div>
+    <div class="stats">
+      <div class="stat"><span>Economia em 1 ano</span><strong id="economiaAnual"></strong></div>
+      <div class="stat"><span>Economia em 5 anos</span><strong id="economia5Anos"></strong></div>
+      <div class="stat"><span>Economia em 25 anos</span><strong id="economia25Anos"></strong></div>
+      <div class="stat"><span>Conta residual estimada</span><strong id="contaResidual"></strong></div>
+    </div>
+    <div class="analysis"><h3>Detalhes aproximados do projeto</h3><div class="analysis-list">
+      <div class="analysis-item"><span>Consumo mensal estimado</span><strong id="consumoEstimado"></strong></div>
+      <div class="analysis-item"><span>Potência sugerida do sistema</span><strong id="potenciaSistema"></strong></div>
+      <div class="analysis-item"><span>Quantidade aproximada de painéis</span><strong id="quantidadePaineis"></strong></div>
+      <div class="analysis-item"><span>Imóvel analisado</span><strong id="tipoResultado"></strong></div>
+      <div class="analysis-item"><span>Cidade informada</span><strong id="cidadeResultado"></strong></div>
+    </div></div>
+    <p class="notice">Esta é uma estimativa inicial. Tarifas, impostos, incidência solar, consumo, condições do telhado e regras da distribuidora podem alterar o dimensionamento e a economia final.</p>
+    <button class="new-simulation" type="button" onclick="novaSimulacao()">Fazer nova simulação</button>
+  </div>
+</section>
+</main>
+
+<div class="overlay" id="leadOverlay">
+  <div class="modal">
+    <div class="modal-icon">🔐</div>
+    <h2>Seu resultado está pronto</h2>
+    <p>Preencha seus dados para liberar gratuitamente a análise completa da sua economia.</p>
+    <div class="grid">
+      <div class="field full"><label for="nome">Nome completo</label><input id="nome" type="text" placeholder="Digite seu nome" autocomplete="name"></div>
+      <div class="field"><label for="cpf">CPF</label><input id="cpf" type="text" inputmode="numeric" maxlength="14" placeholder="000.000.000-00"></div>
+      <div class="field"><label for="telefone">Telefone / WhatsApp</label><input id="telefone" type="tel" inputmode="numeric" maxlength="15" placeholder="(00) 00000-0000" autocomplete="tel"></div>
+    </div>
+    <div class="error" id="erroLead"></div>
+    <button type="button" onclick="liberarResultado()">Ver meu resultado completo</button>
+    <p class="lgpd">Ao continuar, você autoriza o contato sobre soluções de energia solar e concorda com o tratamento dos dados informados.</p>
+  </div>
+</div>
+<script>
+let dadosCalculo={};
+const BRL=new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'});
+const contaInput=document.getElementById('conta');
+contaInput.addEventListener('input',()=>{let n=contaInput.value.replace(/\D/g,'').slice(0,10);contaInput.value=n?BRL.format(Number(n)/100).replace('R$\u00a0',''):''});
+function moedaNumero(v){return Number(v.replace(/\./g,'').replace(',','.').replace(/[^\d.]/g,''))||0}
+function erro(id,msg){const e=document.getElementById(id);e.textContent=msg;e.style.display='block'}
+function limparErro(id){document.getElementById(id).style.display='none'}
+function iniciarCalculo(){
+  limparErro('erroSimulador');
+  const conta=moedaNumero(contaInput.value),cidade=document.getElementById('cidade').value,tipo=document.getElementById('tipo').value,dist=document.getElementById('distribuidora').value;
+  if(conta<100){erro('erroSimulador','Informe uma conta de luz válida, a partir de R$ 100,00.');return}
+  if(!cidade){erro('erroSimulador','Selecione sua cidade.');return}
+  if(!dist){erro('erroSimulador','Selecione sua distribuidora de energia.');return}
+  const economia=conta*.85,residual=conta-economia,consumo=conta/.95,potencia=consumo/130,paineis=Math.max(1,Math.ceil(potencia/.55));
+  dadosCalculo={conta,cidade,tipo,dist,economia,residual,consumo,potencia,paineis};
+  document.getElementById('simulador').style.display='none';
+  document.getElementById('loading').style.display='block';
+  animarMedidor();
+}
+function animarMedidor(){
+  const meter=document.getElementById('powerMeter');
+  const number=document.getElementById('powerPercent');
+  const status=document.getElementById('loadingStatus');
+  let percentual=0;
+  number.textContent='0%';
+  meter.style.background='conic-gradient(var(--verde) 0deg,#e7eee9 0deg)';
+  const timer=setInterval(()=>{
+    percentual++;
+    number.textContent=percentual+'%';
+    meter.style.background=`conic-gradient(var(--verde) ${percentual*3.6}deg,#e7eee9 0deg)`;
+    if(percentual===25)status.textContent='Verificando o consumo informado...';
+    if(percentual===50)status.textContent='Analisando o potencial solar da cidade...';
+    if(percentual===72)status.textContent='Calculando a economia estimada...';
+    if(percentual>=100){
+      clearInterval(timer);
+      status.textContent='Análise concluída com sucesso!';
+      setTimeout(()=>{
+        document.getElementById('loading').style.display='none';
+        document.getElementById('leadOverlay').classList.add('show');
+      },450);
+    }
+  },22);
+}
+function liberarResultado(){
+  limparErro('erroLead');const nome=document.getElementById('nome').value.trim(),cpf=document.getElementById('cpf').value,tel=document.getElementById('telefone').value;
+  if(nome.length<3){erro('erroLead','Informe seu nome completo.');return}if(!validarCPF(cpf)){erro('erroLead','Informe um CPF válido.');return}if(tel.replace(/\D/g,'').length<10){erro('erroLead','Informe um telefone válido com DDD.');return}
+  const lead={nome,cpf,telefone:tel,cidade:dadosCalculo.cidade,distribuidora:dadosCalculo.dist,tipo:dadosCalculo.tipo,conta:dadosCalculo.conta,criadoEm:new Date().toISOString()};
+  localStorage.setItem('ultimoLeadSolar',JSON.stringify(lead));
+  preencherResultado(dadosCalculo.cidade);document.getElementById('leadOverlay').classList.remove('show');document.getElementById('resultado').style.display='block';
+}
+function preencherResultado(cidade){const d=dadosCalculo;document.getElementById('economiaMensal').textContent=BRL.format(d.economia);document.getElementById('economiaAnual').textContent=BRL.format(d.economia*12);document.getElementById('economia5Anos').textContent=BRL.format(d.economia*60);document.getElementById('economia25Anos').textContent=BRL.format(d.economia*300);document.getElementById('contaResidual').textContent=BRL.format(d.residual);document.getElementById('consumoEstimado').textContent=Math.round(d.consumo).toLocaleString('pt-BR')+' kWh/mês';document.getElementById('potenciaSistema').textContent=d.potencia.toFixed(2).replace('.',',')+' kWp';document.getElementById('quantidadePaineis').textContent=d.paineis+' painéis de 550 W';document.getElementById('tipoResultado').textContent=d.tipo;document.getElementById('cidadeResultado').textContent=cidade+' - SP';document.getElementById('pillDistribuidora').textContent=d.dist}
+function novaSimulacao(){document.getElementById('resultado').style.display='none';document.getElementById('simulador').style.display='block';contaInput.focus()}
+function validarCPF(cpf){cpf=cpf.replace(/\D/g,'');if(cpf.length!==11||/^(\d)\1{10}$/.test(cpf))return false;let s=0;for(let i=0;i<9;i++)s+=Number(cpf[i])*(10-i);let d=(s*10)%11;if(d===10)d=0;if(d!==Number(cpf[9]))return false;s=0;for(let i=0;i<10;i++)s+=Number(cpf[i])*(11-i);d=(s*10)%11;if(d===10)d=0;return d===Number(cpf[10])}
+document.getElementById('cpf').addEventListener('input',function(){let v=this.value.replace(/\D/g,'').slice(0,11);v=v.replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d{1,2})$/,'$1-$2');this.value=v});
+document.getElementById('telefone').addEventListener('input',function(){let v=this.value.replace(/\D/g,'').slice(0,11);this.value=v.length>10?v.replace(/(\d{2})(\d{5})(\d{0,4})/,'($1) $2-$3').replace(/-$/,''):v.replace(/(\d{2})(\d{4})(\d{0,4})/,'($1) $2-$3').replace(/-$/,'')});
+async function carregarCidades(){const s=document.getElementById('cidade');try{const r=await fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados/35/municipios?orderBy=nome');if(!r.ok)throw new Error();const cidades=await r.json();s.innerHTML='<option value="">Selecione sua cidade</option>'+cidades.map(c=>`<option value="${c.nome}">${c.nome}</option>`).join('')}catch(e){s.innerHTML='<option value="">Não foi possível carregar as cidades</option>';}}
+carregarCidades();
+</script>
+</body>
+</html>
